@@ -1,4 +1,8 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=1457
+This is a fork of a mirror of http://www.vim.org/scripts/script.php?script_id=1457
+
+The fork makes the script also work on Windows.  Of course, it still doesn't work
+if any of your colorscheme file names have regex special characters in them.  It
+will cycle back to the beginning when it hits one of those, probably
 
 This script provides a function, CycleColor (which is mapped to F4), to cycle through (almost) all available colorschemes.  It includes colorschemes from all \"colors\" subdirectories in the runtimepath.
 

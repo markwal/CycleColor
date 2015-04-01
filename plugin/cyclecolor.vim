@@ -74,17 +74,18 @@ function! s:CycleColor(direction)
 		endif
 	endif
 
+    let escaped = substitute(s:currentfile, '\\', '\\\\', 'g')
 	if a:direction >= 0
 		" Find the current file name, and select the next one.
 		" No substitution will take place if the current file is not
 		"   found or is the last in the list.
-		let nextfile = substitute(s:schemes, '.*\n'.s:currentfile.'\n\([^\x0A]\+\)\n.*', '\1', '')
+		let nextfile = substitute(s:schemes, '.*\n'.escaped.'\n\([^\x0A]\+\)\n.*', '\1', '')
 		" If the above worked, there will be no control chars in
 		"   nextfile, so this will not substitute; otherwise, this will
 		"   choose the first file in the list.
 		let nextfile = substitute(nextfile, '\n\+\([^\x0A]\+\)\n.*', '\1', '')
 	else
-		let nextfile = substitute(s:schemes, '.*\n\([^\x0A]\+\)\n'.s:currentfile.'\n.*', '\1', '')
+		let nextfile = substitute(s:schemes, '.*\n\([^\x0A]\+\)\n'.escaped.'\n.*', '\1', '')
 		let nextfile = substitute(nextfile, '.*\n\([^\x0A]\+\)\n\+', '\1', '')
 	endif
 
